@@ -6,9 +6,14 @@
     <title>О котиках - Мир котиков</title>
     <meta name="description" content="Всё самое интересное о наших пушистых друзьях">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
+    <!-- Кнопка переключения темы -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+        🌙
+    </button>
+
     <header class="site-header">
         <a href="index.html" class="site-header__brand">Мир котиков</a>
         <nav class="site-nav">
@@ -64,35 +69,58 @@
             <h2>Статистика о котиках</h2>
             <p>Немного цифр о наших пушистых друзьях:</p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-4); text-align: center;">
-                <div>
-                    <h3 style="font-size: 2.5rem; color: var(--color-primary); margin: 0;">600+</h3>
-                    <p>пород котиков в мире</p>
+            <div class="statistics-grid">
+                <div class="grid-item">
+                    <h3>Доля котиков, найденных на улице</h3>
+                    <p>Около 30% котиков были найдены на улице и приючены добрыми людьми</p>
                 </div>
-                <div>
-                    <h3 style="font-size: 2.5rem; color: var(--color-primary); margin: 0;">20</h3>
-                    <p>лет - рекорд долголетия</p>
+                <div class="grid-item">
+                    <h3>Самые популярные породы</h3>
+                    <p>Британская короткошерстная, мейн-кун и сиамская - самые любимые породы в мире</p>
                 </div>
-                <div>
-                    <h3 style="font-size: 2.5rem; color: var(--color-primary); margin: 0;">48 км/ч</h3>
-                    <p>максимальная скорость</p>
-                </div>
-                <div>
-                    <h3 style="font-size: 2.5rem; color: var(--color-primary); margin: 0;">95%</h3>
-                    <p>ДНК совпадает с тигром</p>
+                <div class="grid-item">
+                    <h3>Средняя продолжительность жизни</h3>
+                    <p>В среднем, котики живут 12-15 лет, но некоторые доживают и до 20!</p>
                 </div>
             </div>
         </section>
-
-        <!-- Кнопка "Назад" -->
-        <div style="text-align: center; margin: var(--space-5) 0;">
-            <a href="javascript:history.back()" class="button">Вернуться назад</a>
-        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2023 Мир котиков. С любовью к каждому хвостику</p>
-        <p>Телефон: +7 (123) 456-78-90</p>
+    <footer class="site-footer">
+        <p>© 2024 Мир котиков. Все права защищены.</p>
     </footer>
+
+    <script>
+        // Переключение темы
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.dataset.theme;
+            
+            if (currentTheme === 'dark') {
+                body.dataset.theme = 'light';
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙'; // Замените на символ солнца
+            } else {
+                body.dataset.theme = 'dark';
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️'; // Замените на символ луны
+            }
+        });
+        
+        // Проверка темы при загрузке страницы
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.dataset.theme = savedTheme;
+            if (savedTheme === 'dark') {
+                themeToggle.textContent = '☀️'; // Замените на символ луны
+            } else {
+                themeToggle.textContent = '🌙'; // Замените на символ солнца
+            }
+        } else {
+            body.dataset.theme = 'light';
+        }
+    </script>
 </body>
 </html>
