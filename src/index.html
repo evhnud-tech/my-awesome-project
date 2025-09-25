@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мир котиков - Главная</title>
+    <meta name="description" content="Добро пожаловать в уютный мир котиков! Здесь вы найдете всё о наших пушистых друзьях">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="site-header">
+        <a href="index.html" class="site-header__brand">Мир котиков</a>
+        <nav class="site-nav">
+            <ul class="site-nav__list">
+                <li><a href="index.html" class="site-nav__link">Главная</a></li>
+                <li><a href="about.html" class="site-nav__link">О котиках</a></li>
+                <li><a href="contacts.html" class="site-nav__link">Найти котика</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Уникальное основное содержимое страницы -->
+    <main>
+        <h1>Добро пожаловать в мир котиков</h1>
+        
+        <!-- Кнопка быстрой связи -->
+        <div style="text-align: center;">
+            <button id="openDialog" type="button" class="form__button" style="margin: 20px 0; font-size: 1.1rem;">
+                Быстрая связь
+            </button>
+        </div>
+        
+        <section id="breeds"> 
+            <h2>Популярные породы</h2>
+            <div class="image-gallery">
+                <img src="../assets/images/kotik1.jpg" 
+                    alt="Счастливый котик 1 в новом доме" 
+                    class="responsive-image"
+                    width="300" height="200">
+                <img src="../assets/images/kotik2.jpg" 
+                    alt="Счастливый котик 2 в новом доме" 
+                    class="responsive-image"
+                    width="300" height="200">
+                <img src="../assets/images/kotik3.jpg" 
+                    alt="Счастливый котик 3 в новом доме" 
+                    class="responsive-image"
+                    width="300" height="200">
+            </div>
+            <p>От пушистых мейн-кунов до грациозных сиамских - каждая порода уникальна по-своему. Узнайте больше о характере и особенностях разных котиков!</p>
+            <a href="#contacts" class="button">Хочу котика!</a>
+        </section>
+
+        <section id="care">
+            <h2>Уход за котиками</h2>
+            <p>Правильное питание, уход за шерстью и забота о здоровье вашего питомца. Наши советы помогут сделать жизнь вашего котика счастливой и здоровой!</p>
+            <ul>
+                <li>Сбалансированное питание</li>
+                <li>Уход за шерстью</li>
+                <li>Регулярные визиты к ветеринару</li>
+                <li>Игры и развлечения</li>
+            </ul>
+        </section>
+
+        <section id="contacts">
+            <h2>Где найти своего котика?</h2>
+            <p>Поможем найти самого милого и подходящего вам котика! Мы сотрудничаем с проверенными приютами и питомниками.</p>
+            <a href="contacts.html" class="button">Найти друга!</a>
+        </section>
+
+        <section>
+            <h2>Видео о котиках</h2>
+            <div class="media-container">
+                <iframe src="https://www.youtube.com/embed/LNrBbGcLhXg" 
+                        title="Милое видео с котиками" 
+                        allowfullscreen></iframe>
+            </div>
+            <p>Посмотрите, как наши котики играют и радуются жизни!</p>
+        </section>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <p>&copy; 2023 Мир котиков. С любовью к каждому хвостику</p>
+        <p>Телефон: +7 (123) 456-78-90</p>
+        <p>Email: kotiki@mail.com</p>
+    </footer>
+
+    <!-- Модальное окно для быстрой связи -->
+    <dialog id="contactDialog" aria-labelledby="dialogTitle">
+        <h2 id="dialogTitle">Обратная связь</h2>
+
+        <form id="contactForm" method="dialog" novalidate>
+            <label for="name" class="form__label">Имя *</label>
+            <input id="name" name="name" type="text" required minlength="2" autocomplete="given-name" class="form__input" placeholder="Ваше имя">
+
+            <label for="email" class="form__label">E-mail *</label>
+            <input id="email" name="email" type="email" required autocomplete="email" class="form__input" placeholder="your@email.com">
+
+            <label for="phone" class="form__label">Телефон *</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="phoneHelp" placeholder="+7 (900) 000-00-00" required pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" class="form__input">
+            <small id="phoneHelp" style="display: block; margin-bottom: 1rem; color: var(--color-muted); font-size: 0.9em; text-align: left;">Формат: +7 (900) 000-00-00</small>
+
+            <label for="date" class="form__label">Дата обращения</label>
+            <input id="date" name="date" type="date" class="form__input">
+
+            <label for="topic" class="form__label">Тема *</label>
+            <select id="topic" name="topic" required class="form__select">
+                <option value="">Выберите тему</option>
+                <option value="question">Вопрос о котике</option>
+                <option value="order">Хочу забрать котика</option>
+                <option value="cooperation">Сотрудничество</option>
+                <option value="other">Другое</option>
+            </select>
+
+            <label for="message" class="form__label">Сообщение *</label>
+            <textarea id="message" name="message" rows="4" required class="form__textarea" placeholder="Расскажите нам о вашем будущем котике..."></textarea>
+
+            <div class="form-actions">
+                <button type="button" id="closeDialog" class="form__button" style="background: var(--color-muted); color: white;">Закрыть</button>
+                <button type="submit" class="form__button">Отправить</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script>
+
+    // JavaScript для модального окна и валидации
+    const dlg = document.getElementById('contactDialog');
+    const openBtn = document.getElementById('openDialog');
+    const closeBtn = document.getElementById('closeDialog');
+    const form = document.getElementById('contactForm');
+    let lastActive = null;
+
+    // Открытие модалки
+    openBtn.addEventListener('click', () => {
+        lastActive = document.activeElement;
+        dlg.showModal();
+        dlg.querySelector('input, select, textarea, button')?.focus();
+    });
+
+    // Закрытие модалки
+    closeBtn.addEventListener('click', () => dlg.close('cancel'));
+
+    // Валидация формы
+    form.addEventListener('submit', (e) => {
+        // Сброс кастомных сообщений
+        [...form.elements].forEach(el => el.setCustomValidity?.(''));
+        
+        // Проверка встроенных ограничений
+        if (!form.checkValidity()) {
+            e.preventDefault();
+            
+            // Показать ошибки
+            form.reportValidity();
+            
+            // Подсветка проблемных полей
+            [...form.elements].forEach(el => {
+                if (el.willValidate) {
+                    el.toggleAttribute('aria-invalid', !el.checkValidity());
+                }
+            });
+            return;
+        }
+        
+        // Успешная отправка
+        e.preventDefault();
+        alert('Спасибо! Ваше сообщение отправлено! Мы свяжемся с вами в ближайшее время.');
+        dlg.close('success');
+        form.reset();
+    });
+
+    // Возврат фокуса после закрытия модалки
+    dlg.addEventListener('close', () => {
+        lastActive?.focus();
+    });
+
+    // Плавная прокрутка для якорных ссылок
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    </script>
+</body>
+</html>
