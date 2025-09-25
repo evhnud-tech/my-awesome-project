@@ -6,55 +6,104 @@
     <title>Найти котика - Мир котиков</title>
     <meta name="description" content="Поможем найти вашего идеального пушистого друга">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <a href="index.html">🐾 Мир котиков</a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О котиках</a></li>
-                <li><a href="contacts.html">Найти котика</a></li>
+    <header class="site-header">
+        <a href="index.html" class="site-header__brand">Мир котиков</a>
+        <nav class="site-nav">
+            <ul class="site-nav__list">
+                <li><a href="index.html" class="site-nav__link">Главная</a></li>
+                <li><a href="about.html" class="site-nav__link">О котиках</a></li>
+                <li><a href="contacts.html" class="site-nav__link">Найти котика</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        <nav aria-label="Хлебные крошки">
+            <a href="index.html">Главная</a> > 
+            <span>Найти котика</span>
+        </nav>
+
         <h1>Найдите своего идеального котика</h1>
         
         <section id="shelters">
             <h2>Приюты и питомники</h2>
-            <p>Телефон: +7 (123) 456-78-90</p>
-            <p>Email: kotiki@mail.com</p>
-            <p>Адрес: г. Москва, ул. Кошачья, д. 15</p>
+            <div style="background: var(--color-accent); padding: var(--space-4); border-radius: var(--radius); margin: var(--space-4) 0;">
+                <p>Телефон: <strong>+7 (123) 456-78-90</strong></p>
+                <p>Email: <strong>kotiki@mail.com</strong></p>
+                <p>Адрес: <strong>г. Москва, ул. Кошачья, д. 15</strong></p>
+                <p>Часы работы: <strong>10:00 - 20:00 ежедневно</strong></p>
+            </div>
+            <p>Мы сотрудничаем с лучшими приютами и питомниками, чтобы каждый котик нашел свой дом!</p>
         </section>
 
         <section id="application">
             <h2>Заявка на знакомство</h2>
-            <form>
-                <label for="name">Ваше имя:</label>
-                <input type="text" id="name" name="name" required>
+            <form class="form">
+                <label for="name" class="form__label">Ваше имя:</label>
+                <input type="text" id="name" name="name" required class="form__input" placeholder="Как к вам обращаться?">
                 
-                <label for="phone">Ваш телефон:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <label for="phone" class="form__label">Ваш телефон:</label>
+                <input type="tel" id="phone" name="phone" required class="form__input" placeholder="+7 (900) 000-00-00">
                 
-                <label for="preferences">Какого котика ищете?</label>
-                <textarea id="preferences" name="preferences" rows="3" placeholder="Опишите ваши предпочтения..."></textarea>
+                <label for="email" class="form__label">Ваш email:</label>
+                <input type="email" id="email" name="email" class="form__input" placeholder="your@email.com">
                 
-                <button type="submit">Найти мне котика!</button>
+                <label for="preferences" class="form__label">Какого котика ищете?</label>
+                <textarea id="preferences" name="preferences" rows="4" class="form__textarea" placeholder="Опишите ваши предпочтения: порода, возраст, характер..."></textarea>
+                
+                <div style="margin: var(--space-4) 0;">
+                    <label style="display: flex; align-items: center; gap: var(--space-2);">
+                        <input type="checkbox" name="agreement" required>
+                        <span>Я согласен на обработку персональных данных</span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="form__button">Найти мне котика!</button>
             </form>
         </section>
 
-        <nav aria-label="Хлебные крошки">
-            <a href="index.html">Главная</a> > 
-            <a href="contacts.html">Найти котика</a>
-        </nav>
+        <section>
+            <h2>Почему выбирают нас?</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h3>Гарантия здоровья</h3>
+                    <p>Все котики здоровы и привиты</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Забота о каждом</h3>
+                    <p>Индивидуальный подход к выбору</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Поддержка 24/7</h3>
+                    <p>Помогаем после принятия котика</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2023 Мир котиков. С любовью к каждому хвостику</p>
         <p>Телефон: +7 (123) 456-78-90</p>
-        <a href="javascript:history.back()">← Вернуться назад</a>
+        <a href="javascript:history.back()" class="button">Вернуться назад</a>
     </footer>
+
+    <script>
+    // Валидация формы на странице контактов
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (form.checkValidity()) {
+                alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время для подбора идеального котика!');
+                form.reset();
+            } else {
+                form.reportValidity();
+            }
+        });
+    }
+    </script>
 </body>
 </html>
