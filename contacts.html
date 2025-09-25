@@ -6,9 +6,14 @@
     <title>Найти котика - Мир котиков</title>
     <meta name="description" content="Поможем найти вашего идеального пушистого друга">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
+    <!-- Кнопка переключения темы -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+        🌙
+    </button>
+
     <header class="site-header">
         <a href="index.html" class="site-header__brand">Мир котиков</a>
         <nav class="site-nav">
@@ -55,7 +60,7 @@
                 <textarea id="preferences" name="preferences" rows="4" class="form__textarea" placeholder="Опишите ваши предпочтения: порода, возраст, характер..."></textarea>
                 
                 <div style="margin: var(--space-4) 0;">
-                    <label style="display: flex; align-items: center; gap: var(--space-2);">
+                    <label style="display: flex; align-items: center; gap: var(--space-2); color: var(--color-fg);">
                         <input type="checkbox" name="agreement" required>
                         <span>Я согласен на обработку персональных данных</span>
                     </label>
@@ -91,7 +96,29 @@
     </footer>
 
     <script>
-    // Валидация формы на странице контактов
+    // Управление темной темой
+    const themeToggle = document.getElementById('themeToggle');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    updateThemeButton(currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeButton(newTheme);
+    });
+
+    function updateThemeButton(theme) {
+        themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+        themeToggle.setAttribute('aria-label', 
+            theme === 'light' ? 'Включить темную тему' : 'Включить светлую тему');
+    }
+
+    // Валидация формы
     const form = document.querySelector('form');
     if (form) {
         form.addEventListener('submit', (e) => {
