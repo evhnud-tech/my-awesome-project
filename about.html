@@ -11,7 +11,7 @@
 <body>
     <!-- Кнопка переключения темы -->
     <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
-        🌙
+        ⭐
     </button>
 
     <header class="site-header">
@@ -27,7 +27,7 @@
 
     <main>
         <nav aria-label="Хлебные крошки">
-            <a href="index.html">Главная</a> →
+            <a href="index.html">Главная</a> &rarr;
             <span>О котиках</span>
         </nav>
 
@@ -87,7 +87,7 @@
     </main>
 
     <footer class="site-footer">
-        <p>© 2024 Мир котиков. Все права защищены.</p>
+        <p>© 2025 Мир котиков. Все права защищены.</p>
     </footer>
 
     <script>
@@ -101,11 +101,11 @@
             if (currentTheme === 'dark') {
                 body.dataset.theme = 'light';
                 localStorage.setItem('theme', 'light');
-                themeToggle.textContent = '🌙'; // Замените на символ солнца
+                themeToggle.textContent = '⭐';
             } else {
                 body.dataset.theme = 'dark';
                 localStorage.setItem('theme', 'dark');
-                themeToggle.textContent = '☀️'; // Замените на символ луны
+                themeToggle.textContent = '🌟'; 
             }
         });
         
@@ -114,9 +114,9 @@
         if (savedTheme) {
             body.dataset.theme = savedTheme;
             if (savedTheme === 'dark') {
-                themeToggle.textContent = '☀️'; // Замените на символ луны
+                themeToggle.textContent = '🌟'; 
             } else {
-                themeToggle.textContent = '🌙'; // Замените на символ солнца
+                themeToggle.textContent = '⭐'; 
             }
         } else {
             body.dataset.theme = 'light';
